@@ -103,14 +103,13 @@ export async function getAssetBySlug(slug: string, options?: { includeDrafts?: b
       .select('*')
       .eq('slug', slug)
       .is('deleted_at', null)
-      .limit(1)
-      .maybeSingle();
+      .limit(1);
 
     if (!includeDrafts) {
       query = query.eq('published', true).lte('published_at', new Date().toISOString());
     }
 
-    const { data, error } = await query;
+    const { data, error } = await query.maybeSingle();
 
     if (error) {
       console.error('Error fetching asset by slug from Supabase:', error.message);
