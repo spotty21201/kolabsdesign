@@ -17,7 +17,12 @@ export interface Asset {
   publishedAt: string;
   proofCue: string;
   
-  // Detail blocks
+  // New Content Model
+  problem: string;
+  solution: string;
+  how: string;
+
+  // Detail blocks (Deprecated)
   decision: string;
   inputs: string;
   output: string;
@@ -40,6 +45,11 @@ export const MOCK_ASSETS: Asset[] = [
     featured: true,
     publishedAt: '2024-05-12T10:00:00Z',
     proofCue: '15% ROI uplift identified',
+    // New Fields
+    problem: 'Should we acquire this plot at the asking price based on maximum allowable density?',
+    solution: 'Reduced feasibility study time from 3 weeks to 4 hours. Identified 15% ROI uplift on average.',
+    how: '**Inputs:**\nPlot boundaries (GeoJSON), local zoning codes, current construction costs, target IRR.\n\n**Outputs:**\nInteractive 3D massing model, financial pro-forma, and risk matrix.',
+    // Deprecated Fields
     decision: 'Should we acquire this plot at the asking price based on maximum allowable density?',
     inputs: 'Plot boundaries (GeoJSON), local zoning codes, current construction costs, target IRR.',
     output: 'Interactive 3D massing model, financial pro-forma, and risk matrix.',
@@ -60,6 +70,11 @@ export const MOCK_ASSETS: Asset[] = [
     featured: true,
     publishedAt: '2024-04-20T10:00:00Z',
     proofCue: 'Saved $40M in infrastructure costs',
+    // New Fields
+    problem: 'How to phase infrastructure deployment to minimize upfront capital while maximizing early land value?',
+    solution: 'Saved $40M in upfront infrastructure costs and accelerated phase 1 revenue by 18 months.',
+    how: '**Inputs:**\nExisting masterplan CAD, regional transit plans, phased capital budget constraints.\n\n**Outputs:**\nRevised phasing strategy, updated land use mix, and infrastructure deployment schedule.',
+    // Deprecated Fields
     decision: 'How to phase infrastructure deployment to minimize upfront capital while maximizing early land value?',
     inputs: 'Existing masterplan CAD, regional transit plans, phased capital budget constraints.',
     output: 'Revised phasing strategy, updated land use mix, and infrastructure deployment schedule.',
@@ -80,6 +95,11 @@ export const MOCK_ASSETS: Asset[] = [
     featured: false,
     publishedAt: '2024-06-01T10:00:00Z',
     proofCue: '12-page executive memo',
+    // New Fields
+    problem: 'Where should real estate developers invest in AI capabilities today to build a competitive moat?',
+    solution: 'Adopted by 3 master developers to guide their 2025 digital transformation budgets.',
+    how: '**Inputs:**\nInterviews with 20+ GCC developers, analysis of 50+ proptech startups, internal Kolabs experiments.\n\n**Outputs:**\nStrategic memo detailing a 3-horizon adoption framework for AI in real estate.',
+    // Deprecated Fields
     decision: 'Where should real estate developers invest in AI capabilities today to build a competitive moat?',
     inputs: 'Interviews with 20+ GCC developers, analysis of 50+ proptech startups, internal Kolabs experiments.',
     output: 'Strategic memo detailing a 3-horizon adoption framework for AI in real estate.',
@@ -100,6 +120,11 @@ export const MOCK_ASSETS: Asset[] = [
     featured: true,
     publishedAt: '2024-06-15T10:00:00Z',
     proofCue: 'Published in Urban Tech Journal',
+    // New Fields
+    problem: 'Can we predict zoning variance approvals based on historical precedent?',
+    solution: 'Demonstrates the potential to quantify regulatory risk in early-stage land acquisition.',
+    how: '**Inputs:**\n10 years of municipal building permits, NLP extraction of variance justifications.\n\n**Outputs:**\nPredictive model scoring the likelihood of variance approval for new proposals.',
+    // Deprecated Fields
     decision: 'Can we predict zoning variance approvals based on historical precedent?',
     inputs: '10 years of municipal building permits, NLP extraction of variance justifications.',
     output: 'Predictive model scoring the likelihood of variance approval for new proposals.',
@@ -120,6 +145,11 @@ export const MOCK_ASSETS: Asset[] = [
     featured: false,
     publishedAt: '2024-05-28T10:00:00Z',
     proofCue: 'Integrates with Revit & Rhino',
+    // New Fields
+    problem: 'Which structural system offers the best balance of cost and embodied carbon?',
+    solution: 'Enabled a client to reduce embodied carbon by 12% with zero cost premium on a commercial tower.',
+    how: '**Inputs:**\nBasic massing, structural system selection, local material availability.\n\n**Outputs:**\nComparative dashboard showing CapEx vs. Embodied Carbon trade-offs.',
+    // Deprecated Fields
     decision: 'Which structural system offers the best balance of cost and embodied carbon?',
     inputs: 'Basic massing, structural system selection, local material availability.',
     output: 'Comparative dashboard showing CapEx vs. Embodied Carbon trade-offs.',
@@ -140,6 +170,11 @@ export const MOCK_ASSETS: Asset[] = [
     featured: false,
     publishedAt: '2024-03-10T10:00:00Z',
     proofCue: '22% increase in projected land value',
+    // New Fields
+    problem: 'How to zone station-adjacent parcels to maximize long-term value capture?',
+    solution: 'Projected a 22% increase in land value capture over the baseline scenario.',
+    how: '**Inputs:**\nTransit alignment, ridership projections, current land ownership, market absorption rates.\n\n**Outputs:**\nZoning recommendations, value capture mechanisms, and implementation roadmap.',
+    // Deprecated Fields
     decision: 'How to zone station-adjacent parcels to maximize long-term value capture?',
     inputs: 'Transit alignment, ridership projections, current land ownership, market absorption rates.',
     output: 'Zoning recommendations, value capture mechanisms, and implementation roadmap.',

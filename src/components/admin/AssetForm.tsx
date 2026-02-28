@@ -15,11 +15,9 @@ export interface AssetFormValues {
   published: boolean;
   publishedAt: string;
   proofCue: string;
-  decision: string;
-  inputs: string;
-  output: string;
-  confidence: string;
-  impact: string;
+  problem: string;
+  solution: string;
+  how: string;
 }
 
 const TYPES = ['Tool', 'Case', 'Brief', 'Research'];
@@ -159,28 +157,21 @@ export function AssetForm({
 
         <div className="space-y-6">
           <label className="space-y-2 block">
-            <span className="text-xs uppercase tracking-widest text-charcoal/50">Decision (Markdown)</span>
-            <textarea name="decision" defaultValue={initialValues.decision} rows={4} className="w-full border border-ink/20 px-3 py-2" />
+            <span className="text-xs uppercase tracking-widest text-charcoal/50">Problem (Markdown)</span>
+            <p className="text-xs text-charcoal/50 mb-2">What&apos;s at stake and why it matters.</p>
+            <textarea name="problem" defaultValue={initialValues.problem} rows={4} className="w-full border border-ink/20 px-3 py-2" />
           </label>
 
           <label className="space-y-2 block">
-            <span className="text-xs uppercase tracking-widest text-charcoal/50">Inputs (Markdown)</span>
-            <textarea name="inputs" defaultValue={initialValues.inputs} rows={4} className="w-full border border-ink/20 px-3 py-2" />
+            <span className="text-xs uppercase tracking-widest text-charcoal/50">Solution (Markdown)</span>
+            <p className="text-xs text-charcoal/50 mb-2">What Kolabs built and what it enables (include results if available).</p>
+            <textarea name="solution" defaultValue={initialValues.solution} rows={4} className="w-full border border-ink/20 px-3 py-2" />
           </label>
 
           <label className="space-y-2 block">
-            <span className="text-xs uppercase tracking-widest text-charcoal/50">Output (Markdown)</span>
-            <textarea name="output" defaultValue={initialValues.output} rows={4} className="w-full border border-ink/20 px-3 py-2" />
-          </label>
-
-          <label className="space-y-2 block">
-            <span className="text-xs uppercase tracking-widest text-charcoal/50">Confidence (Markdown)</span>
-            <textarea name="confidence" defaultValue={initialValues.confidence} rows={4} className="w-full border border-ink/20 px-3 py-2" />
-          </label>
-
-          <label className="space-y-2 block">
-            <span className="text-xs uppercase tracking-widest text-charcoal/50">Impact (Markdown)</span>
-            <textarea name="impact" defaultValue={initialValues.impact} rows={4} className="w-full border border-ink/20 px-3 py-2" />
+            <span className="text-xs uppercase tracking-widest text-charcoal/50">How (Markdown)</span>
+            <p className="text-xs text-charcoal/50 mb-2">Plain-language inputs + outputs.</p>
+            <textarea name="how" defaultValue={initialValues.how} rows={4} className="w-full border border-ink/20 px-3 py-2" />
           </label>
         </div>
 

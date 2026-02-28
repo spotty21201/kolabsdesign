@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 import { StatusChip } from '@/components/StatusChip';
 import Link from 'next/link';
@@ -88,87 +89,80 @@ export default async function AssetDetailPage({
         </div>
       )}
 
-      {/* 5-Block Standard Template (PRD section 7) */}
+      {/* 3-Block Content Model */}
       <div className="space-y-16">
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
-              1. Decision
-            </h2>
-          </div>
-          <div className="md:col-span-8">
-            <p className="text-xl text-charcoal/80 leading-relaxed font-serif italic">
-              &ldquo;{asset.decision}&rdquo;
-            </p>
-          </div>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
-              2. Inputs
-            </h2>
-          </div>
-          <div className="md:col-span-8">
-            <p className="text-lg text-charcoal/70 leading-relaxed">
-              {asset.inputs}
-            </p>
-          </div>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
-              3. Output
-            </h2>
-          </div>
-          <div className="md:col-span-8">
-            <p className="text-lg text-charcoal/70 leading-relaxed">
-              {asset.output}
-            </p>
-          </div>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
-              4. Confidence
-            </h2>
-          </div>
-          <div className="md:col-span-8">
-            <div className="bg-amber-50 rounded-xl p-6 border border-amber-200">
-              <p className="text-lg text-amber-900 leading-relaxed">
-                <span className="font-semibold block mb-2 text-amber-800">Risk Flags & Constraints:</span>
-                {asset.confidence}
-              </p>
+        {asset.problem && (
+          <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-4">
+              <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
+                Problem
+              </h2>
             </div>
-          </div>
-        </section>
+            <div className="md:col-span-8">
+              <ReactMarkdown 
+                components={{
+                  p: (props: any) => <p className="text-xl text-charcoal/80 leading-relaxed font-serif italic mb-4" {...props} />,
+                  strong: (props: any) => <strong className="font-semibold text-charcoal" {...props} />,
+                  ul: (props: any) => <ul className="list-disc pl-6 mb-4 space-y-2 text-xl text-charcoal/80 font-serif italic" {...props} />,
+                  li: (props: any) => <li {...props} />
+                }}
+              >
+                {asset.problem}
+              </ReactMarkdown>
+            </div>
+          </section>
+        )}
 
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
-            <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
-              5. Impact
-            </h2>
-          </div>
-          <div className="md:col-span-8">
-            <div className="bg-blue-50 rounded-xl p-6 border border-blue-200">
-              <div className="font-mono text-xs uppercase tracking-widest text-[#0055FF] mb-3">Measured Outcome</div>
-              <p className="text-xl text-blue-900 leading-relaxed font-semibold">
-                {asset.impact}
-              </p>
-              <div className="mt-4 pt-4 border-t border-blue-200 flex justify-between items-center text-sm text-blue-800">
-                <span>Proof Cue:</span>
-                <span className="font-semibold">{asset.proofCue}</span>
+        {asset.solution && (
+          <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-4">
+              <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
+                Solution
+              </h2>
+            </div>
+            <div className="md:col-span-8">
+              <div className="prose-like text-lg text-charcoal/80 leading-relaxed">
+                <ReactMarkdown
+                  components={{
+                    p: (props: any) => <p className="mb-4" {...props} />,
+                    strong: (props: any) => <strong className="font-semibold text-charcoal" {...props} />,
+                    ul: (props: any) => <ul className="list-disc pl-6 mb-4 space-y-2" {...props} />,
+                    li: (props: any) => <li {...props} />
+                  }}
+                >
+                  {asset.solution}
+                </ReactMarkdown>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {asset.how && (
+          <section className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-4">
+              <h2 className="text-lg font-bold text-charcoal uppercase tracking-widest flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-gray-300 inline-block"></span>
+                How
+              </h2>
+            </div>
+            <div className="md:col-span-8 bg-soft-gray/30 rounded-xl p-6 md:p-8 border border-border-gray">
+              <div className="prose-like text-charcoal/70 leading-relaxed">
+                <ReactMarkdown
+                  components={{
+                    p: (props: any) => <p className="mb-4" {...props} />,
+                    strong: (props: any) => <strong className="font-semibold text-charcoal block mb-1 text-sm uppercase tracking-widest mt-6 first:mt-0" {...props} />,
+                    ul: (props: any) => <ul className="list-disc pl-6 mb-4 space-y-1" {...props} />,
+                    li: (props: any) => <li {...props} />
+                  }}
+                >
+                  {asset.how}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
 
       <hr className="my-16 border-border-gray" />

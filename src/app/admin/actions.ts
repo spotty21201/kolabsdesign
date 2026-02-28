@@ -112,11 +112,9 @@ export async function createAssetAction(formData: FormData) {
     published: formData.get('published') === 'on',
     published_at: parseDateTimeLocal(formData.get('publishedAt')),
     proof_cue: String(formData.get('proofCue') ?? '').trim(),
-    decision_md: String(formData.get('decision') ?? ''),
-    inputs_md: String(formData.get('inputs') ?? ''),
-    output_md: String(formData.get('output') ?? ''),
-    confidence_md: String(formData.get('confidence') ?? ''),
-    impact_md: String(formData.get('impact') ?? ''),
+    problem_md: String(formData.get('problem') ?? ''),
+    solution_md: String(formData.get('solution') ?? ''),
+    how_md: String(formData.get('how') ?? ''),
   };
 
   const supabaseAdmin = createSupabaseAdminClient();
@@ -188,11 +186,9 @@ export async function updateAssetAction(id: string, formData: FormData) {
     published: formData.get('published') === 'on',
     published_at: parseDateTimeLocal(formData.get('publishedAt')),
     proof_cue: String(formData.get('proofCue') ?? '').trim(),
-    decision_md: String(formData.get('decision') ?? ''),
-    inputs_md: String(formData.get('inputs') ?? ''),
-    output_md: String(formData.get('output') ?? ''),
-    confidence_md: String(formData.get('confidence') ?? ''),
-    impact_md: String(formData.get('impact') ?? ''),
+    problem_md: String(formData.get('problem') ?? ''),
+    solution_md: String(formData.get('solution') ?? ''),
+    how_md: String(formData.get('how') ?? ''),
   };
 
   const { error } = await supabaseAdmin.from('items').update(payload).eq('id', id);
@@ -246,6 +242,9 @@ export async function seedTemplateAssetsAction() {
     published: true,
     published_at: item.publishedAt,
     proof_cue: item.proofCue,
+    problem_md: item.problem,
+    solution_md: item.solution,
+    how_md: item.how,
     decision_md: item.decision,
     inputs_md: item.inputs,
     output_md: item.output,

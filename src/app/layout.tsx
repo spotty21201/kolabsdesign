@@ -17,7 +17,7 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Kolabs | Editorial Archive",
+  title: "Kolabs.Design",
   description: "Decision intelligence for land, infrastructure, and capital deployment.",
 };
 import "./globals.css";

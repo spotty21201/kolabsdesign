@@ -26,14 +26,14 @@ export default async function NowPage() {
         </div>
 
         <div className="relative z-10">
-          <span className="block font-serif italic font-medium text-lg md:text-xl text-orange mb-3.5">
+          <span className="block font-serif font-bold text-xlg md:text-xl text-orange mb-0">
             2026 Indonesia. A cautious economy. Decisions matter.
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-6">
             Decision intelligence for land, infrastructure, and capital deployment.
           </h1>
           <p className="text-xl md:text-2xl text-charcoal/60 max-w-3xl text-pretty mb-10 leading-relaxed md:leading-relaxed">
-            Kolabs.Design is an AI Think Tank building tools, cases, and research at the intersection of design, development, and AI.
+            Kolabs.Design is an AI Think Tank building tools, cases, and research at the intersection of design, development, and generative AI.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-16">
             <Link

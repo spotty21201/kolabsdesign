@@ -21,6 +21,9 @@ interface ItemRow {
   published: boolean;
   published_at: string | null;
   proof_cue: string | null;
+  problem_md: string | null;
+  solution_md: string | null;
+  how_md: string | null;
   decision_md: string | null;
   inputs_md: string | null;
   output_md: string | null;
@@ -57,11 +60,9 @@ function mapToFormValues(row: ItemRow): AssetFormValues {
     published: Boolean(row.published),
     publishedAt: toDatetimeLocal(row.published_at),
     proofCue: row.proof_cue ?? '',
-    decision: row.decision_md ?? '',
-    inputs: row.inputs_md ?? '',
-    output: row.output_md ?? '',
-    confidence: row.confidence_md ?? '',
-    impact: row.impact_md ?? '',
+    problem: row.problem_md || row.decision_md || '',
+    solution: row.solution_md || row.impact_md || '',
+    how: row.how_md || (row.inputs_md || row.output_md ? `**Inputs:**\n${row.inputs_md || ''}\n\n**Outputs:**\n${row.output_md || ''}` : ''),
   };
 }
 
