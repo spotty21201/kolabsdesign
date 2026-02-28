@@ -21,11 +21,6 @@ interface ItemRow {
   problem_md: string | null;
   solution_md: string | null;
   how_md: string | null;
-  decision_md: string | null;
-  inputs_md: string | null;
-  output_md: string | null;
-  confidence_md: string | null;
-  impact_md: string | null;
   deleted_at: string | null;
 }
 
@@ -44,14 +39,14 @@ function mapItemRowToAsset(item: ItemRow): Asset {
     featured: Boolean(item.featured),
     publishedAt: item.published_at ?? new Date(0).toISOString(),
     proofCue: item.proof_cue ?? '',
-    problem: item.problem_md || item.decision_md || '',
-    solution: item.solution_md || item.impact_md || '',
-    how: item.how_md || (item.inputs_md || item.output_md ? `**Inputs:**\n${item.inputs_md || ''}\n\n**Outputs:**\n${item.output_md || ''}` : ''),
-    decision: item.decision_md ?? '',
-    inputs: item.inputs_md ?? '',
-    output: item.output_md ?? '',
-    confidence: item.confidence_md ?? '',
-    impact: item.impact_md ?? '',
+    problem: item.problem_md ?? '',
+    solution: item.solution_md ?? '',
+    how: item.how_md ?? '',
+    decision: '',
+    inputs: '',
+    output: '',
+    confidence: '',
+    impact: '',
   };
 }
 
