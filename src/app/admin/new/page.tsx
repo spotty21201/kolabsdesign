@@ -17,11 +17,9 @@ const emptyValues: AssetFormValues = {
   published: false,
   publishedAt: new Date().toISOString().slice(0, 16),
   proofCue: '',
-  decision: '',
-  inputs: '',
-  output: '',
-  confidence: '',
-  impact: '',
+  problem: '',
+  solution: '',
+  how: '',
 };
 
 export default async function AdminNewAssetPage() {
