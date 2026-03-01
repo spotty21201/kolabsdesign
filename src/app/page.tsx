@@ -50,36 +50,22 @@ export default async function NowPage() {
             </Link>
           </div>
 
-          <div className="py-8 border-y border-ink/20">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="flex flex-col">
-                <span className="text-4xl font-serif text-charcoal mb-1">5B+</span>
-                <span className="text-xs font-sans text-charcoal/50 uppercase tracking-widest border-t border-ink/10 pt-2 mt-1 inline-block">
-                  AUM Optimized (USD)
-                </span>
+          <div className="py-8 border-y border-ink/20 bg-white/80 backdrop-blur-sm">
+            <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-charcoal/70 mb-6">What you get in 30 days</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-ink/20">
+              <div className="pr-0 sm:pr-8 pb-6 sm:pb-0">
+                <h3 className="font-serif text-2xl font-bold text-charcoal mb-2">Clarity</h3>
+                <p className="text-sm font-sans text-charcoal/75 leading-relaxed">Decision map + assumption stress test</p>
               </div>
-              <div className="flex flex-col">
-                <span className="text-4xl font-serif text-charcoal mb-1">12</span>
-                <span className="text-xs font-sans text-charcoal/50 uppercase tracking-widest border-t border-ink/10 pt-2 mt-1 inline-block">
-                  Masterplans
-                </span>
+              <div className="px-0 sm:px-8 py-6 sm:py-0">
+                <h3 className="font-serif text-2xl font-bold text-charcoal mb-2">Options</h3>
+                <p className="text-sm font-sans text-charcoal/75 leading-relaxed">Scenarios, trade-offs, and go/no-go paths</p>
               </div>
-              <div className="flex flex-col">
-                <span className="text-4xl font-serif text-charcoal mb-1">8</span>
-                <span className="text-xs font-sans text-charcoal/50 uppercase tracking-widest border-t border-ink/10 pt-2 mt-1 inline-block">
-                  Proprietary Tools
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-4xl font-serif text-primary mb-1">Q2 2026</span>
-                <span className="text-xs font-sans text-charcoal/50 uppercase tracking-widest border-t border-ink/10 pt-2 mt-1 inline-block">
-                  Volume: Q2 2026
-                </span>
+              <div className="pl-0 sm:pl-8 pt-6 sm:pt-0">
+                <h3 className="font-serif text-2xl font-bold text-charcoal mb-2">Confidence</h3>
+                <p className="text-sm font-sans text-charcoal/75 leading-relaxed">Decision-ready outputs for boards and stakeholders</p>
               </div>
             </div>
-            <p className="text-sm font-sans text-charcoal/60 mt-8 pt-6 border-t border-ink/10 lg:w-2/3">
-              Published tools, briefs, and cases across land strategy, infrastructure planning, and capital readiness.
-            </p>
           </div>
         </div>
       </section>
