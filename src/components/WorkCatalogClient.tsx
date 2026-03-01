@@ -62,7 +62,7 @@ export function WorkCatalogClient({ assets }: WorkCatalogClientProps) {
       </div>
 
       <div className="flex flex-col md:flex-row gap-8 mb-12">
-        <div className={`w-full md:w-64 flex-shrink-0 space-y-8 ${isMobileFiltersOpen ? 'block' : 'hidden md:block'}`}>
+        <div className={`w-full md:w-44 flex-shrink-0 space-y-8 ${isMobileFiltersOpen ? 'block' : 'hidden md:block'}`}>
           <div className="border-t border-ink/15 pt-6">
             <h3 className="text-lg font-serif italic text-charcoal mb-4">Type</h3>
             <div className="space-y-3">

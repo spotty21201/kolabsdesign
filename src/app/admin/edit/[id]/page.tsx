@@ -55,9 +55,9 @@ function mapToFormValues(row: ItemRow): AssetFormValues {
     published: Boolean(row.published),
     publishedAt: toDatetimeLocal(row.published_at),
     proofCue: row.proof_cue ?? '',
-    problem: row.problem_md ?? '',
-    solution: row.solution_md ?? '',
-    how: row.how_md ?? '',
+    problem: (row.problem_md ?? '').replace(/\\n/g, '\n'),
+    solution: (row.solution_md ?? '').replace(/\\n/g, '\n'),
+    how: (row.how_md ?? '').replace(/\\n/g, '\n'),
   };
 }
 

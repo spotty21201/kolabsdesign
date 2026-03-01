@@ -55,7 +55,7 @@ export function AssetCard({ asset }: AssetCardProps) {
           ))}
         </div>
         
-        <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="font-serif text-xl md:text-2xl text-charcoal mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
           {asset.title}
         </h3>
         
