@@ -46,8 +46,8 @@ export function AssetCard({ asset }: AssetCardProps) {
       )}
       
       {/* Content Section */}
-      <div className="flex flex-col flex-grow p-6 md:p-8 bg-[#FAFAFA]">
-        <div className="flex flex-wrap gap-1.5 mb-6">
+      <div className="flex flex-col flex-grow p-4 md:p-5 bg-[#FAFAFA]">
+        <div className="flex flex-wrap gap-1.5 mb-3">
           {asset.tags.map(tag => (
             <span key={tag} className="text-[10px] font-sans uppercase tracking-widest text-charcoal/60 bg-soft-gray px-2 py-1 border border-ink/5">
               {tag}
@@ -55,15 +55,15 @@ export function AssetCard({ asset }: AssetCardProps) {
           ))}
         </div>
         
-        <h3 className="font-serif text-xl md:text-2xl text-charcoal mb-4 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="font-serif text-xl md:text-2xl text-charcoal mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">
           {asset.title}
         </h3>
         
-        <p className="font-sans text-sm text-charcoal/60 mb-5 line-clamp-2 leading-relaxed">
+        <p className="font-sans text-sm text-charcoal/60 mb-4 line-clamp-4 leading-relaxed">
           {asset.oneLiner}
         </p>
         
-        <div className="mt-auto pt-5 border-t border-ink/15 flex items-center justify-between">
+        <div className="mt-auto pt-3 border-t border-ink/15 flex items-center justify-between">
           <span className="text-xs font-sans text-charcoal/60 truncate pr-4 uppercase tracking-widest">
             {asset.proofCue || 'Metrics pending'}
           </span>

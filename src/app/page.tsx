@@ -13,8 +13,8 @@ export default async function NowPage() {
     .slice(0, 4);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <section className="mb-24 pt-8 md:pt-16 relative">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <section className="mb-16 pt-4 md:pt-8 relative">
         <div
           className="absolute top-0 right-0 w-full md:w-3/4 lg:w-2/3 h-full -z-10 opacity-30 pointer-events-none mix-blend-multiply"
           style={{
@@ -29,13 +29,13 @@ export default async function NowPage() {
           <span className="block font-serif font-bold text-xlg md:text-xl text-orange mb-0">
             2026 Indonesia. A cautious economy. Decisions matter.
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-4">
             Decision intelligence for land, infrastructure, and capital deployment.
           </h1>
-          <p className="text-xl md:text-2xl text-charcoal/60 max-w-3xl text-pretty mb-10 leading-relaxed md:leading-relaxed">
-            Kolabs.Design is an AI Think Tank building tools, cases, and research at the intersection of design, development, and generative AI.
+          <p className="text-lg md:text-xl text-charcoal/60 max-w-3xl text-pretty mb-7 leading-relaxed">
+            Kolabs.Design is a Think Tank building tools, cases, and research at the intersection of design, development and generative AI.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 mb-16">
+          <div className="flex flex-col sm:flex-row gap-3 mb-10">
             <Link
               href="/work"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-sans rounded-none bg-primary text-white hover:bg-primary/90 transition-colors uppercase tracking-widest font-bold"
@@ -70,14 +70,14 @@ export default async function NowPage() {
         </div>
       </section>
 
-      <section className="mb-24">
-        <div className="flex items-baseline justify-between mb-8 border-b border-ink/20 pb-4">
+      <section className="mb-14">
+        <div className="flex items-baseline justify-between mb-5 border-b border-ink/20 pb-3">
           <h2 className="text-3xl font-serif text-ink">Featured Releases</h2>
           <Link href="/work" className="text-sm font-sans font-medium text-primary hover:text-primary/80 flex items-center">
             View all <ArrowRight className="ml-1 w-4 h-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredAssets.map((asset) => (
             <AssetCard key={asset.id} asset={asset} />
           ))}
@@ -85,7 +85,7 @@ export default async function NowPage() {
       </section>
 
       <section>
-        <div className="flex items-baseline justify-between mb-8 border-b border-ink/20 pb-4">
+        <div className="flex items-baseline justify-between mb-5 border-b border-ink/20 pb-3">
           <h2 className="text-3xl font-serif text-ink">Latest Updates</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

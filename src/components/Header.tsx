@@ -16,7 +16,7 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-soft-gray/80 backdrop-blur-md border-b border-border-gray">
+    <header className="sticky top-0 z-50 bg-soft-gray/80 border-b border-ink/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center">
@@ -35,8 +35,8 @@ export function Header() {
                   href={item.path}
                   className={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 transition-colors ${
                     isActive
-                      ? 'border-primary text-charcoal'
-                      : 'border-transparent text-charcoal/50 hover:text-charcoal hover:border-border-gray/80'
+                      ? 'border-orange text-charcoal'
+                      : 'border-transparent text-charcoal/50 hover:text-charcoal hover:border-ink/30'
                   }`}
                 >
                   {item.name}

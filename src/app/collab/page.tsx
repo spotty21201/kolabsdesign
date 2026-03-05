@@ -39,14 +39,14 @@ const people = [
 
 export default function CollabPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       {/* Hero Section */}
-      <section className="mb-20 pt-8 md:pt-16">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-6">
+      <section className="mb-10 pt-4 md:pt-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-charcoal leading-[1.05] tracking-tight text-balance mb-4">
           Collab with Kolabs.
         </h1>
         <div className="max-w-3xl space-y-5 text-charcoal/65">
-          <p className="text-xl md:text-2xl text-pretty leading-relaxed md:leading-relaxed">
+          <p className="text-lg md:text-xl text-pretty leading-relaxed">
             Kolabs.Design is an AI Think Tank building the decision intelligence layer for land, infrastructure, and capital deployment.
           </p>
           <p className="text-base md:text-lg leading-relaxed">
@@ -58,8 +58,8 @@ export default function CollabPage() {
 
 
       {/* People Section */}
-      <section className="mb-24">
-        <h2 className="text-3xl font-serif text-ink mb-8 border-b border-ink/15 pb-4">
+      <section className="mb-10">
+        <h2 className="text-2xl font-serif text-ink mb-4 border-b border-ink/15 pb-3">
           People
         </h2>
 
@@ -91,7 +91,7 @@ export default function CollabPage() {
                 </div>
 
                 {/* Text content */}
-                <div className={`flex-grow p-6 md:p-10 ${index % 2 === 1 ? 'md:order-1' : 'md:order-2'}`}>
+                <div className={`flex-grow p-5 md:p-7 ${index % 2 === 1 ? 'md:order-1' : 'md:order-2'}`}>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-charcoal mb-1">{person.name}</h3>
                   <p className="text-sm text-primary mb-5 font-bold uppercase tracking-widest">{person.role}</p>
                   <div className="space-y-3 mb-6 text-sm md:text-base text-charcoal/70 leading-relaxed">
@@ -130,10 +130,10 @@ export default function CollabPage() {
       </section>
 
       {/* Conversion Section */}
-      <section id="contact" className="bg-soft-gray text-ink p-8 md:p-16 rounded-none border border-ink/15">
+      <section id="contact" className="bg-soft-gray text-ink p-6 md:p-10 rounded-none border border-ink/15">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-4xl md:text-5xl lg:text-5xl font-serif text-ink leading-tight tracking-tight mb-6">
+            <h2 className="text-3xl md:text-4xl font-serif text-ink leading-tight tracking-tight mb-4">
               Engage with the Think Tank.
             </h2>
             <div className="font-sans text-ink/60 mb-12 text-base leading-relaxed max-w-md space-y-4">
@@ -152,7 +152,7 @@ export default function CollabPage() {
             </div>
           </div>
           
-          <div className="bg-white p-6 md:p-10 rounded-none border border-ink/20 flex flex-col h-full shadow-sm">
+          <div className="bg-white p-5 md:p-7 rounded-none border border-ink/20 flex flex-col h-full shadow-sm">
             <ContactForm />
           </div>
         </div>
