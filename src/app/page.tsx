@@ -29,7 +29,7 @@ export default async function NowPage() {
           <span className="block font-serif font-bold text-xlg md:text-xl text-orange mb-0">
             2026 Indonesia. A cautious economy. Decisions matter.
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-4">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-4">
             Decision intelligence for land, infrastructure, and capital deployment.
           </h1>
           <p className="text-lg md:text-xl text-charcoal/60 max-w-3xl text-pretty mb-7 leading-relaxed">

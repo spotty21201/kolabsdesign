@@ -27,7 +27,7 @@ export function WorkCatalogClient({ assets }: WorkCatalogClientProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
       <div className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-serif text-charcoal mb-3 leading-tight tracking-tight">Decision Assets</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-charcoal leading-[1.05] tracking-tight text-balance mb-4">Decision Assets</h1>
         <p className="text-xl text-charcoal/60 max-w-2xl">
           A catalog of tools, cases, and research designed to accelerate land, infrastructure, and capital deployment.
         </p>
