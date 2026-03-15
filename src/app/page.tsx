@@ -1,9 +1,20 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+
 import { AssetCard } from '@/components/AssetCard';
+import { JsonLd } from '@/components/JsonLd';
 import { getAssets } from '@/lib/api';
+import { buildOrganizationJsonLd, buildPageMetadata, buildWebsiteJsonLd } from '@/lib/seo';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Kolabs.Design | Decision intelligence for land, real estate, infrastructure, and capital deployment',
+  description:
+    'Kolabs.Design builds tools, cases, and research for land strategy, real estate, infrastructure planning, and capital deployment in Indonesia.',
+  path: '/',
+});
 
 export default async function NowPage() {
   const assets = await getAssets();
@@ -14,6 +25,9 @@ export default async function NowPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <JsonLd data={buildOrganizationJsonLd()} />
+      <JsonLd data={buildWebsiteJsonLd()} />
+
       <section className="mb-16 pt-4 md:pt-8 relative">
         <div
           className="absolute top-0 right-0 w-full md:w-3/4 lg:w-2/3 h-full -z-10 opacity-30 pointer-events-none mix-blend-multiply"
@@ -27,7 +41,7 @@ export default async function NowPage() {
 
         <div className="relative z-10">
           <span className="block font-serif font-bold text-xlg md:text-xl text-orange mb-0">
-            2026 Indonesia. A cautious economy. Decisions matter.
+            2026 Indonesia. GCC War. A cautious economy. Decisions matter.
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-4">
             Decision intelligence for land, real estate, infrastructure, and capital deployment

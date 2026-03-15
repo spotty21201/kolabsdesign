@@ -1,7 +1,18 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+
 import { ContactForm } from '@/components/ContactForm';
+import { JsonLd } from '@/components/JsonLd';
+import { buildBreadcrumbJsonLd, buildCollabPersonJsonLd, buildPageMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Collab with Kolabs | Doddy Samiaji, Farid Ramdani, and strategic support',
+  description:
+    'Meet Doddy Samiaji and Farid Ramdani of Kolabs.Design, a decision intelligence think tank for land, real estate, infrastructure, and capital deployment in Indonesia.',
+  path: '/collab',
+});
 
 const people = [
   {
@@ -38,8 +49,20 @@ const people = [
 ] as const;
 
 export default function CollabPage() {
+  const personSchema = buildCollabPersonJsonLd();
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Collab', path: '/collab' },
+        ])}
+      />
+      {personSchema.map((person) => (
+        <JsonLd key={person.url} data={person} />
+      ))}
+
       {/* Hero Section */}
       <section className="mb-10 pt-4 md:pt-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-charcoal leading-[1.05] tracking-tight text-balance mb-4">
@@ -47,10 +70,10 @@ export default function CollabPage() {
         </h1>
         <div className="max-w-3xl space-y-5 text-charcoal/65">
           <p className="text-lg md:text-xl text-pretty leading-relaxed">
-            Kolabs.Design is an AI Think Tank building the decision intelligence layer for land, infrastructure, and capital deployment.
+            Kolabs.Design is an AI Think Tank building the decision intelligence layer for land, real estate, infrastructure, and capital deployment.
           </p>
           <p className="text-base md:text-lg leading-relaxed">
-            We help developers, landowners, Danantara's SOEs companies and Indonesian conglomerate leadership move from ambiguity to board-ready direction through tools, scenarios, briefs, and repeatable playbooks that stand up to budgets, regulations, timelines, and stakeholders.
+            We help developers, landowners, Danantara&apos;s SOEs companies and Indonesian conglomerate leadership move from ambiguity to board-ready direction through tools, scenarios, briefs, and repeatable playbooks that stand up to budgets, regulations, timelines, and stakeholders.
           </p>
         </div>
       </section>
@@ -67,6 +90,7 @@ export default function CollabPage() {
           {people.map((person, index) => (
             <article
               key={person.name}
+              id={person.name === 'Doddy Samiaji' ? 'doddy-samiaji' : 'farid-ramdani'}
               className="border border-ink/20 bg-white overflow-hidden"
             >
               <div className="flex flex-col md:flex-row">

@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Roboto_Condensed } from "next/font/google";
 
+import "./globals.css";
+
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { SITE_URL, getMetadataRobots } from "@/lib/seo";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -19,16 +25,14 @@ const robotoCondensed = Roboto_Condensed({
 export const metadata: Metadata = {
   title: "Kolabs.Design",
   description: "Decision intelligence for land, real estate, infrastructure, and capital deployment.",
+  metadataBase: new URL(SITE_URL),
+  robots: getMetadataRobots(true),
   icons: {
     icon: "/logo-kolabs.png",
     shortcut: "/logo-kolabs.png",
     apple: "/logo-kolabs.png",
   },
 };
-import "./globals.css";
-
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 
 export default function RootLayout({
   children,

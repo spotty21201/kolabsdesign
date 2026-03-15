@@ -1,12 +1,50 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
-import { StatusChip } from '@/components/StatusChip';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Download } from 'lucide-react';
+
+import { JsonLd } from '@/components/JsonLd';
+import { StatusChip } from '@/components/StatusChip';
 import { getAssetBySlug } from '@/lib/api';
+import { buildAssetStructuredData, buildBreadcrumbJsonLd, buildPageMetadata, getAssetSeoProfile, getMetadataRobots } from '@/lib/seo';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { isAdminEmail } from '@/lib/admin';
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const query = await searchParams;
+  const asset = await getAssetBySlug(slug);
+
+  if (!asset) {
+    return buildPageMetadata({
+      title: 'Decision Asset | Kolabs.Design',
+      description: 'Decision asset from Kolabs.Design.',
+      path: `/work/${slug}`,
+      indexable: false,
+    });
+  }
+
+  const seo = getAssetSeoProfile(asset);
+
+  return {
+    ...buildPageMetadata({
+      title: seo.title,
+      description: seo.description,
+      path: `/work/${asset.slug}`,
+      images: asset.heroImage ? [asset.heroImage] : undefined,
+      type: asset.type === 'Tool' ? 'website' : 'article',
+    }),
+    robots: query.preview === '1' ? getMetadataRobots(false) : getMetadataRobots(true),
+  };
+}
 
 export default async function AssetDetailPage({
   params,
@@ -37,9 +75,19 @@ export default async function AssetDetailPage({
   const isPlaceholderCta = asset.ctaUrl.trim() === '#' || asset.ctaUrl.trim().length === 0;
   const resolvedCtaUrl = isPlaceholderCta ? '/collab' : asset.ctaUrl;
   const isExternalCta = /^https?:\/\//.test(resolvedCtaUrl);
+  const assetStructuredData = buildAssetStructuredData(asset);
 
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Work', path: '/work' },
+          { name: asset.title, path: `/work/${asset.slug}` },
+        ])}
+      />
+      <JsonLd data={assetStructuredData} />
+
       {/* Back button */}
       <Link href="/work" className="inline-flex items-center text-sm font-medium text-charcoal/50 hover:text-charcoal mb-8 transition-colors">
         <ArrowLeft className="mr-2 w-4 h-4" />
@@ -102,10 +150,22 @@ export default async function AssetDetailPage({
             <div className="md:col-span-8">
               <ReactMarkdown 
                 components={{
-                  p: (props: any) => <p className="text-xl text-charcoal/80 leading-relaxed font-serif italic mb-4" {...props} />,
-                  strong: (props: any) => <strong className="font-semibold text-charcoal" {...props} />,
-                  ul: (props: any) => <ul className="list-disc pl-6 mb-4 space-y-2 text-xl text-charcoal/80 font-serif italic" {...props} />,
-                  li: (props: any) => <li {...props} />
+                  p: ({ node, ...props }: React.ComponentProps<'p'> & { node?: unknown }) => {
+                    void node;
+                    return <p className="text-xl text-charcoal/80 leading-relaxed font-serif italic mb-4" {...props} />;
+                  },
+                  strong: ({ node, ...props }: React.ComponentProps<'strong'> & { node?: unknown }) => {
+                    void node;
+                    return <strong className="font-semibold text-charcoal" {...props} />;
+                  },
+                  ul: ({ node, ...props }: React.ComponentProps<'ul'> & { node?: unknown }) => {
+                    void node;
+                    return <ul className="list-disc pl-6 mb-4 space-y-2 text-xl text-charcoal/80 font-serif italic" {...props} />;
+                  },
+                  li: ({ node, ...props }: React.ComponentProps<'li'> & { node?: unknown }) => {
+                    void node;
+                    return <li {...props} />;
+                  }
                 }}
               >
                 {asset.problem}
@@ -126,10 +186,22 @@ export default async function AssetDetailPage({
               <div className="prose-like text-lg text-charcoal/80 leading-relaxed">
                 <ReactMarkdown
                   components={{
-                    p: (props: any) => <p className="mb-4" {...props} />,
-                    strong: (props: any) => <strong className="font-semibold text-charcoal" {...props} />,
-                    ul: (props: any) => <ul className="list-disc pl-6 mb-4 space-y-2" {...props} />,
-                    li: (props: any) => <li {...props} />
+                    p: ({ node, ...props }: React.ComponentProps<'p'> & { node?: unknown }) => {
+                      void node;
+                      return <p className="mb-4" {...props} />;
+                    },
+                    strong: ({ node, ...props }: React.ComponentProps<'strong'> & { node?: unknown }) => {
+                      void node;
+                      return <strong className="font-semibold text-charcoal" {...props} />;
+                    },
+                    ul: ({ node, ...props }: React.ComponentProps<'ul'> & { node?: unknown }) => {
+                      void node;
+                      return <ul className="list-disc pl-6 mb-4 space-y-2" {...props} />;
+                    },
+                    li: ({ node, ...props }: React.ComponentProps<'li'> & { node?: unknown }) => {
+                      void node;
+                      return <li {...props} />;
+                    }
                   }}
                 >
                   {asset.solution}
@@ -151,10 +223,22 @@ export default async function AssetDetailPage({
               <div className="prose-like text-charcoal/70 leading-relaxed">
                 <ReactMarkdown
                   components={{
-                    p: (props: any) => <p className="mb-4" {...props} />,
-                    strong: (props: any) => <strong className="font-semibold text-charcoal block mb-1 text-sm uppercase tracking-widest mt-6 first:mt-0" {...props} />,
-                    ul: (props: any) => <ul className="list-disc pl-6 mb-4 space-y-1" {...props} />,
-                    li: (props: any) => <li {...props} />
+                    p: ({ node, ...props }: React.ComponentProps<'p'> & { node?: unknown }) => {
+                      void node;
+                      return <p className="mb-4" {...props} />;
+                    },
+                    strong: ({ node, ...props }: React.ComponentProps<'strong'> & { node?: unknown }) => {
+                      void node;
+                      return <strong className="font-semibold text-charcoal block mb-1 text-sm uppercase tracking-widest mt-6 first:mt-0" {...props} />;
+                    },
+                    ul: ({ node, ...props }: React.ComponentProps<'ul'> & { node?: unknown }) => {
+                      void node;
+                      return <ul className="list-disc pl-6 mb-4 space-y-1" {...props} />;
+                    },
+                    li: ({ node, ...props }: React.ComponentProps<'li'> & { node?: unknown }) => {
+                      void node;
+                      return <li {...props} />;
+                    }
                   }}
                 >
                   {asset.how}
