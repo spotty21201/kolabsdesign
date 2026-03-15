@@ -30,7 +30,7 @@ export default async function NowPage() {
             2026 Indonesia. A cautious economy. Decisions matter.
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-charcoal leading-[1.0] tracking-tight text-balance mb-4">
-            Decision intelligence for land, infrastructure, and capital deployment.
+            Decision intelligence for land, real estate, infrastructure, and capital deployment
           </h1>
           <p className="text-lg md:text-xl text-charcoal/60 max-w-3xl text-pretty mb-7 leading-relaxed">
             Kolabs.Design is a Think Tank building tools, cases, and research at the intersection of design, development and generative AI.
@@ -46,12 +46,12 @@ export default async function NowPage() {
               href="/collab"
               className="inline-flex items-center justify-center px-6 py-3 border border-primary text-sm font-sans rounded-none text-primary bg-white hover:bg-soft-gray transition-colors uppercase tracking-widest font-bold"
             >
-              Request a Briefing
+              Request a Zoom
             </Link>
           </div>
 
-          <div className="py-8 border-y border-ink/20 bg-white/80 backdrop-blur-sm">
-            <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-charcoal/70 mb-6">What you get in 30 days</p>
+          <div className="py-6 pl-6 sm:pl-8 border-y border-ink/20 bg-white/80 backdrop-blur-sm">
+            <p className="text-xs font-sans font-bold uppercase tracking-[0.25em] text-charcoal/70 mb-5">What you get in 30 days</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-ink/20">
               <div className="pr-0 sm:pr-8 pb-6 sm:pb-0">
                 <h3 className="font-serif text-2xl font-bold text-charcoal mb-2">Clarity</h3>

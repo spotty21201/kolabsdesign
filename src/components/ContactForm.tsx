@@ -11,7 +11,7 @@ export function ContactForm() {
     const inquiry = (form.elements.namedItem('inquiry') as HTMLTextAreaElement)?.value || '';
     const subject = encodeURIComponent(`Inquiry from ${name}`);
     const body = encodeURIComponent(`Name / Org: ${name}\nEmail: ${email}\n\nInquiry:\n${inquiry}`);
-    window.location.href = `mailto:contact@kolabs.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@kolabs.design?subject=${subject}&body=${body}`;
   }
 
   return (
